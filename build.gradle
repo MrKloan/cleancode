@@ -1,5 +1,5 @@
 allprojects {
-    group 'fr.esgi'
+    group 'fr.esgi.cleancode'
     version '1.0-SNAPSHOT'
 }
 
