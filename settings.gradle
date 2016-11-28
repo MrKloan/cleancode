@@ -1,3 +1,5 @@
 rootProject.name = 'cleancode'
 
 include 'fizzbuzz'
+include 'pairs'
+
