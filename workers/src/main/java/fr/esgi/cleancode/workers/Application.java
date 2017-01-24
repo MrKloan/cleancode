@@ -4,7 +4,6 @@ import fr.esgi.cleancode.workers.cli.Command;
 import fr.esgi.cleancode.workers.cli.WorkLogCommand;
 import fr.esgi.cleancode.workers.logger.FileLogger;
 import fr.esgi.cleancode.workers.logger.Logger;
-import fr.esgi.cleancode.workers.task.Task;
 
 import java.util.Arrays;
 
@@ -14,7 +13,7 @@ public class Application implements Runnable {
 	private final Command[] commands;
 	private final Logger logger;
 
-	public Application(String[] args) {
+	Application(String[] args) {
 		if(args.length < 3)
 			throw new IllegalArgumentException("You must supply at least a command with its argument(s)");
 
