@@ -1,6 +1,7 @@
 package fr.esgi.cleancode.workers.worker;
 
 import fr.esgi.cleancode.workers.activity.Activity;
+import fr.esgi.cleancode.workers.cli.Command;
 import fr.esgi.cleancode.workers.logger.Logger;
 import fr.esgi.cleancode.workers.task.Task;
 
@@ -18,7 +19,7 @@ public abstract class Worker<T> {
 		this.name = name;
 	}
 
-	public final String work(Activity activity, Logger logger) {
+	public final String work(Activity activity, Logger logger, Command command) {
 		if(task == null)
 			throw new IllegalStateException("The worker must be assigned to a task in order to perform any kind of activity");
 		if(!type.isInstance(activity))
@@ -26,7 +27,15 @@ public abstract class Worker<T> {
 		if(logger == null)
 			throw new IllegalArgumentException("A logger must be provided in order to create a work log record");
 
-		logger.log(this, this.currentTask(), activity);
+		command.exec(
+			logger,
+			task.getName(),
+			this.getName(),
+			activity.toString(),
+			String.valueOf(activity.getStart()),
+			String.valueOf(activity.getEnd()),
+			task.getDate()
+		);
 		return activity.proceed(this);
 	}
 

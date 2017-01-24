@@ -2,6 +2,7 @@ package fr.esgi.cleancode.workers.worker;
 
 import fr.esgi.cleancode.workers.activity.Activity;
 import fr.esgi.cleancode.workers.activity.WorkActivity;
+import fr.esgi.cleancode.workers.cli.DummyCommand;
 import fr.esgi.cleancode.workers.logger.DummyLogger;
 import fr.esgi.cleancode.workers.task.Task;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class WorkerTest {
 		Worker worker = new Human("Peter");
 		Activity activity = new WorkActivity(9, 12);
 
-		worker.work(activity, new DummyLogger());
+		worker.work(activity, new DummyLogger(), new DummyCommand());
 	}
 
 	@Test
@@ -35,7 +36,7 @@ public class WorkerTest {
 		Activity activity = new WorkActivity(9, 12);
 
 		worker.assign(task);
-		String workLog = worker.work(activity, new DummyLogger());
+		String workLog = worker.work(activity, new DummyLogger(), new DummyCommand());
 
 		assertThat(worker.currentTask().getName()).isEqualTo("Task 1");
 		assertThat(workLog).isNotBlank();

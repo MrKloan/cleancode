@@ -2,6 +2,7 @@ package fr.esgi.cleancode.workers.worker;
 
 import fr.esgi.cleancode.workers.activity.Activity;
 import fr.esgi.cleancode.workers.activity.human.SleepActivity;
+import fr.esgi.cleancode.workers.cli.DummyCommand;
 import fr.esgi.cleancode.workers.logger.DummyLogger;
 import fr.esgi.cleancode.workers.task.Task;
 import org.junit.Test;
@@ -15,6 +16,6 @@ public class RobotTest {
 		Activity activity = new SleepActivity(18, 9);
 
 		worker.assign(task);
-		worker.work(activity, new DummyLogger());
+		worker.work(activity, new DummyLogger(), new DummyCommand());
 	}
 }
