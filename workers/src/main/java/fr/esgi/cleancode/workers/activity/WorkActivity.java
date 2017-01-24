@@ -1,10 +1,17 @@
 package fr.esgi.cleancode.workers.activity;
 
-import fr.esgi.cleancode.workers.Worker;
+import fr.esgi.cleancode.workers.worker.Worker;
+import fr.esgi.cleancode.workers.activity.human.HumanActivity;
+import fr.esgi.cleancode.workers.activity.robot.RobotActivity;
 
-public class WorkActivity implements Activity {
+public class WorkActivity extends Activity implements HumanActivity, RobotActivity {
+
+	public WorkActivity(int start, int end) {
+		super(start, end);
+	}
+
 	@Override
-	public void proceed(Worker worker, int start, int end) {
-		System.out.println("Worker " + worker.getName() + " worked from " + start + " to " + end + ".");
+	public String proceed(Worker worker) {
+		return "Worker " + worker.getName() + " worked from " + start + " to " + end + ".";
 	}
 }
